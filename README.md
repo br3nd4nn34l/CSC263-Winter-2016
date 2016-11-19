@@ -31,4 +31,4 @@ Basic Graph Algorithms
 		* Kruskal's Algorithm
 		* Prim's Algorithm
 
-This repository contains all the problem sets I've done for the course.
+This repository contains all the problem sets I've done for the course. I frequently collaborated with [TominF6453](https://github.com/TominF6453/) on these assignments.
