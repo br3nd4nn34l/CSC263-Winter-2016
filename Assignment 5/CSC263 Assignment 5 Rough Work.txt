@@ -1,0 +1,62 @@
+CSC263 Assignment 5 Rough Work
+1) Prove that Disjoint Set (with forest implementation and path compression 
+only) executes k unions followed by k' finds in O(k + k') time
+
+
+2) Figure out a data structure: Idea is to use binomial heap-like arrangement of
+arrays
+	a) I = {3, 5, 1, 17, 10} (5 elements)
+		5 in binary = 101 => one array of size 4, one array of size 1
+		
+		{(3), (1,5,10,17)}
+
+	 I = {17, 8, 3, 10, 1, 12, 6} (7 elements)
+		7 in binary = 111 => (one of each: tree of size 4,2,1)
+		
+		{(17), (3, 8), (1, 6, 10, 12)}
+
+	b) Worst case time complexity of Search(x)
+	
+	Number of arrays = log_2 n (since arrangement of arrays can be written 
+	precisely in binary, so for any number n there are log_2 n digits in binary)
+
+	Number of elements per array in worst case = 2 ^ i, where i is the array
+	number (starting from 0)
+
+	Find(x):
+		for i in range(0, log_2 n):
+			curr_array = arrays[i]
+			if arrays[0] == x:
+				return True
+			else: 
+				arrays[i].BinarySearch(x)
+		return False
+
+	In the worst case, the algo goes through every array and does not find the
+	number. Since there is no particular relationship between numbers from 
+	different arrays, this means that the algo must go through every array in 
+	the set of arrays. Since there are at most log_2 n arrays for a set of
+	size n, and each array has 2^i elements, where i is the array number, 
+	the algorithm must take at least: 
+
+	Sum(i = 0-> floor(log_2 n)) of O(log_2(2^i))
+	= Sum(i = 0-> floor(log_2 n)) of O(i*log_2(2))
+	= Sum(i = 0-> floor(log_2 n)) of O(i)
+	<= (log_2 n) *  O(log_2 n)
+	= O((log_2 n)^2)
+
+	c) Worst case complexity of Insert(x):
+
+	Time needed to move each element from one array to another in sorted order
+	O(n*log_2 n)
+	Maximum number of arrays that will need to be merged into each other
+	O(log_2 n)
+
+	Since O(log_2 n) in O(n * log_2 n), this algorithm runs in O(n*log_2 n) time
+
+	d) TBA
+
+	e) Algorithm to Delete(x) in n time, given a pointer
+	1) Remove x from the array it is a part of - array is still sorted, needs
+		one more element to maintain property
+	2) If there are elements in other arrays, t

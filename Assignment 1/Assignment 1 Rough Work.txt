@@ -1,0 +1,68 @@
+1) a)
+	T(n) = n^2 + 2n + 2
+	Lines 1, 2 = 2 Steps
+	Line 3 = n (Line 4, Line 5, Line 6) = n(1, n, 1) = n(n + 2) = n^2 + 2n
+	Total = n^2 + 2n + 2
+	
+	Big Oh: Exists c in IR+, Exists b in N s.t. ForAll n > b in N, T(n) >= c*g(n)
+		Pick c = 2, b = 3. Then c, b in IR+, N, respectively.
+			Assume that n > b and n in N.
+				Then n > 3.
+				Then n^2 + 2n + 2 > 17 and 2n^2 > 18
+				Then 17 < n^2 + 2n + 2 < 18 < 2n^2
+				Then n^2 + 2n + 2 < 2n^2
+				Then T(n) < c*g(n).
+				
+	
+   b) MOST OF THE MARKS FOR THIS QUESTION COME FROM ANALYSIS OF THE FUNCTION OVER SAMPLE INPUT {1,2,3,...,n}, NOT A PROOF LIKE BELOW
+	T(n) = n^2 + 2n + 2
+	Big Omega: Exists c in IR+, Exists b in N s.t. ForAll n > b in N, T(n) >= c*g(n)
+		Pick c = 1, b = 1. Then c, b in IR+ , N, respectively.
+			Assume that n > b and n in N.
+				Then n > 1.
+				Then n^2 + 2n + 2 > n^2
+				Then T(n) > c* g(n)
+				
+			
+	
+2) a) NEED SOME CODE TRACING HERE
+	Input = [1,2,3]
+	Build-By-Inserts outputs [3,1,2]
+	Build-Max-Heap outputs [3,2,1]
+   b) FOR SOME REASON GOOGLE DRIVE DIDN'T SYNC PROPERLY - LOST WORK FOR BIG-OH ANALYSIS OF BUILD-BY-INSERTS
+	I WOULD ASSUME THAT WE PERFORM ANALYSIS OF THE FUNCTION OVER SOME SAMPLE INPUT {1,2,3,...,n} USING
+	AN ARGUMENT REMINISCENT OF CSC236/40 RUN-TIME ANALYSIS (REP SUB?)
+
+3) 
+	a) 
+		We will be using an n - bit vector/array to represent S and a subset of S as follows:
+
+		The first element in the array will have index 1, the second index 2, 
+			..., all the way to n with index n.
+
+		The i-th index of the array will be referenced as array[i]
+		The value at the i-th index of the array will be referred to as *array[i]
+
+		If some number k is in S, *array[k] = 1. If k is not in S, *array[k] = 0
+		
+		Thus, for n = 8, and S = {1,2,6} the array looks like this: [1, 1, 0, 0, 0, 1, 0, 0].
+	b)
+		Insert(j) works as follows:
+			It assigns Array[j] to be 1
+		Insert(j) takes constant time because accessing an array index takes O(1) time and assigning
+			a value takes O(1) time. Thus, assigning the value at an array index must also take O(1)
+			time. Since 1 is in O(log n) time, Insert(j)'s worst case time performance must also be
+			in O(log n) time.
+
+	c)
+		Member(j) works as follows:
+			Go to Array[j]
+			Return *Array[j] == 1
+		This works because if *Array[j] is 1, it means that j is in S (by the definition of the data
+			structure)
+		
+		Member(j) takes O(1) time because accessing an array index takes O(1) time and checking it's
+			value takes O(1) time. Thus, checking the value at some array index takes O(1) time.
+			Since Member(j) is checking if *Array[j] is 1, Member must take O(1) time to execute.
+			
+ 
